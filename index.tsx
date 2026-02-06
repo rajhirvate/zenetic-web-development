@@ -9,21 +9,29 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
+import { HelmetProvider } from 'react-helmet-async';
+
+// ... (keepimports)
+
 if (rootElement.hasChildNodes()) {
   ReactDOM.hydrateRoot(
     rootElement,
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </HelmetProvider>
     </React.StrictMode>
   );
 } else {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </HelmetProvider>
     </React.StrictMode>
   );
 }

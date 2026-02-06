@@ -43,18 +43,30 @@ const routesToPrerender = [
 
         // Process routes
         for (const url of routesToPrerender) {
-            const appHtml = render(url)
+            const helmetContext = {};
+            const appHtml = render(url, helmetContext);
+            const { helmet } = helmetContext;
 
             // Construct Canonical URL
             const canonicalUrl = `https://zenetic.in${url === '/' ? '' : url}`;
 
-            // Inject content and canonical tag
+            // Inject content and helmet data
+            // We strip the existing title/meta/canonical if present in template to avoid duplicates, 
+            // OR we just rely on Helmet to have generated them and we inject them.
+            // Simplified approach: Replace specific placeholder or append to head.
+
+            const helmetTitle = helmet.title.toString();
+            const helmetMeta = helmet.meta.toString();
+            const helmetLink = helmet.link.toString();
+
             // Note: We need to replace empty div with appHtml
             const html = template
                 .replace(`<div id="root"></div>`, `<div id="root">${appHtml}</div>`)
-                // Fallback for older template style if it exists
                 .replace(`<!--app-html-->`, appHtml)
-                .replace(`</head>`, `<link rel="canonical" href="${canonicalUrl}" />\n</head>`);
+                // Replace the head content with our dynamic SEO data
+                // We assume the index.html has a comment <!--app-head--> or we just append to </head>
+                // To be safe, let's insert before </head>
+                .replace(`</head>`, `${helmetTitle}\n${helmetMeta}\n${helmetLink}\n</head>`);
 
             // Determine path
             const filePath = url === '/' ? 'index.html' : `${url.substring(1)}/index.html`
