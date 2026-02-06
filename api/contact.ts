@@ -24,12 +24,23 @@ export default async function handler(request: VercelRequest, response: VercelRe
     }
 
     try {
-        // 2. Transporter Setup (Using standard SMTP or Service)
-        // User must set EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS, EMAIL_TO, EMAIL_FROM
+        // 2. Transporter Setup
+
+        // Check for missing credentials
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error('Missing EMAIL_USER or EMAIL_PASS environment variables');
+            return response.status(500).json({ error: 'Server configuration error: Missing email credentials' });
+        }
+
+        // Default to Gmail if HOST is not set (Common fallback)
+        const host = process.env.EMAIL_HOST || 'smtp.gmail.com';
+        const port = Number(process.env.EMAIL_PORT) || 587;
+        const secure = process.env.EMAIL_SECURE === 'true'; // Explicitly check for string 'true'
+
         const transporter = nodemailer.createTransport({
-            host: process.env.EMAIL_HOST,
-            port: Number(process.env.EMAIL_PORT) || 587,
-            secure: Boolean(process.env.EMAIL_SECURE) || false, // true for 465, false for other ports
+            host,
+            port,
+            secure,
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS,
