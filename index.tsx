@@ -9,8 +9,7 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
-ReactDOM.hydrateRoot(
-  rootElement,
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
