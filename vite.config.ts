@@ -22,6 +22,9 @@ export default defineConfig(({ mode }) => {
 
     build: {
       outDir: 'dist',
+    },
+    ssr: {
+      noExternal: ['react-helmet-async']
     }
   };
 });
