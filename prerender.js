@@ -20,15 +20,28 @@ const routesToPrerender = [
 ]
 
     ; (async () => {
-        // Copy everything from dist/static to out
-        // Actually we should build into out directly or move it. 
-        // For now, let's assume we render into dist/static and then move.
-        // Actually the plan is:
-        // 1. Build Client -> dist/static
-        // 2. Build Server -> dist/server
-        // 3. Render -> dist/static/index.html etc.
+        // Output directly to dist (where Vercel expects it)
+        // Note: dist/static is where the client build is. We will move those files to dist root after rendering.
+        // Wait, Vercel expects everything in 'dist'.
+        // Current flow: build:client -> dist/static. build:server -> dist/server.
+        // We want final structure in 'dist'. 
+        // So we will copy everything from dist/static to dist, then overwrite with prerendered HTMLs.
 
-        // Ensure we process each route
+        const outputDir = toAbsolute('dist');
+        const staticDir = toAbsolute('dist/static');
+
+        // Ensure dist exists (it should)
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+        }
+
+        // Move all files from dist/static to dist (flattening the structure)
+        // We do this before writing HTMLs so we don't need to copy individual assets
+        if (fs.existsSync(staticDir)) {
+            fs.cpSync(staticDir, outputDir, { recursive: true });
+        }
+
+        // Process routes
         for (const url of routesToPrerender) {
             const appHtml = render(url)
 
@@ -36,18 +49,16 @@ const routesToPrerender = [
             const canonicalUrl = `https://zenetic.in${url === '/' ? '' : url}`;
 
             // Inject content and canonical tag
+            // Note: We need to replace empty div with appHtml
             const html = template
+                .replace(`<div id="root"></div>`, `<div id="root">${appHtml}</div>`)
+                // Fallback for older template style if it exists
                 .replace(`<!--app-html-->`, appHtml)
                 .replace(`</head>`, `<link rel="canonical" href="${canonicalUrl}" />\n</head>`);
-            // Also inject title/meta here if we want dynamic reading, but useEffect does it client side. 
-            // For proper SEO, we might want to regex replace title/meta based on the page content if we had a helmet solution.
-            // But since we use simple useEffect, the initial HTML won't have the unique meta for subpages mostly.
-            // Wait, that's a problem. React Helmet Async is better for SSG.
-            // But for now, putting ANY content is better than empty div.
 
             // Determine path
             const filePath = url === '/' ? 'index.html' : `${url.substring(1)}/index.html`
-            const fullPath = toAbsolute(`out/${filePath}`)
+            const fullPath = toAbsolute(`dist/${filePath}`) // Write to dist directly
 
             // Ensure dir exists
             const dirname = path.dirname(fullPath)
@@ -59,12 +70,9 @@ const routesToPrerender = [
             console.log('pre-rendered:', fullPath)
         }
 
-        // Copy assets from dist/static to out
-        // We can use fs.cpSync in Node 16+
-        fs.cpSync(toAbsolute('dist/static/assets'), toAbsolute('out/assets'), { recursive: true })
-        fs.cpSync(toAbsolute('dist/static/logo.png'), toAbsolute('out/logo.png'))
-        fs.cpSync(toAbsolute('dist/static/raj.webp'), toAbsolute('out/raj.webp'))
-        fs.cpSync(toAbsolute('public/.htaccess'), toAbsolute('out/.htaccess')) // Copy .htaccess
+        // Clean up temporary folders
+        fs.rmSync(toAbsolute('dist/static'), { recursive: true, force: true });
+        fs.rmSync(toAbsolute('dist/server'), { recursive: true, force: true });
 
         // Generate Sitemap
         const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -81,7 +89,11 @@ ${routesToPrerender.map(route => {
         }).join('\n')}
 </urlset>`;
 
-        fs.writeFileSync(toAbsolute('out/sitemap.xml'), sitemap);
-        console.log('sitemap generated: out/sitemap.xml');
+        fs.writeFileSync(toAbsolute('dist/sitemap.xml'), sitemap);
+        console.log('sitemap generated: dist/sitemap.xml');
+
+        // Copy .htaccess if it exists in public (Vite usually copies public to dist/static, so it's likely already moved)
+        // If not, we can leave it.
+
 
     })()

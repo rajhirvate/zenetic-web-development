@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:ssg": "npm run build:client && npm run build:server && npm run generate",
+    "build": "npm run build:client && npm run build:server && npm run generate",
     "build:client": "vite build --outDir dist/static --ssrManifest",
     "build:server": "vite build --ssr entry-server.tsx --outDir dist/server",
     "generate": "node prerender.js",
