@@ -31,9 +31,20 @@ export default async function handler(request: VercelRequest, response: VercelRe
         // 2. Transporter Setup
 
         // Check for missing credentials
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.error('Missing EMAIL_USER or EMAIL_PASS environment variables');
-            return response.status(500).json({ error: 'Server configuration error: Missing email credentials' });
+        const user = process.env.EMAIL_USER?.trim();
+        const pass = process.env.EMAIL_PASS?.trim();
+
+        console.log(`Debug Check: USER=${user ? 'Set' : 'Missing'}, PASS=${pass ? 'Set' : 'Missing'}`);
+
+        if (!user || !pass) {
+            const missing = [];
+            if (!user) missing.push('EMAIL_USER');
+            if (!pass) missing.push('EMAIL_PASS');
+            console.error(`Missing variables: ${missing.join(', ')}`);
+            return response.status(500).json({
+                error: `Server configuration error: Missing ${missing.join(', ')}`,
+                debug: { userSet: !!user, passSet: !!pass }
+            });
         }
 
         // Default to Gmail if HOST is not set (Common fallback)
