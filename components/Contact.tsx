@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-32 bg-brand-cream border-t border-brand-red/10">
+    <section id="contact" className="py-20 bg-brand-cream border-t border-brand-red/10">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           <div>
@@ -182,8 +182,8 @@ const Contact: React.FC = () => {
                       type="button"
                       onClick={() => toggleRequirement(tag)}
                       className={`px-5 py-2 rounded-full border text-xs font-bold uppercase transition-all ${formData.requirements.includes(tag)
-                          ? 'bg-brand-red border-brand-red text-white'
-                          : 'border-brand-black/10 hover:bg-brand-red hover:border-brand-red hover:text-white'
+                        ? 'bg-brand-red border-brand-red text-white'
+                        : 'border-brand-black/10 hover:bg-brand-red hover:border-brand-red hover:text-white'
                         }`}
                     >
                       {tag}

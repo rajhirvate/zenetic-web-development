@@ -15,20 +15,30 @@ const LandingPageDesignPage: React.FC = () => {
                     "@context": "https://schema.org",
                     "@type": "Service",
                     "serviceType": "Landing Page Design",
+                    "name": "Landing Page Design Pune",
+                    "url": "https://zenetic.in/service/landing-page-design-pune",
+                    "description": "We design high-converting landing pages for campaigns, products, and services in Pune. Focused on UI/UX, speed, and ROI-driven results.",
                     "provider": {
                         "@type": "LocalBusiness",
-                        "name": "Zenetic",
-                        "image": "https://zenetic.in/logo.png"
+                        "name": "Zenetic Enterprise - Web Solutions",
+                        "url": "https://zenetic.in",
+                        "telephone": "+919167041276",
+                        "email": "rajhirvate@gmail.com",
+                        "image": "https://zenetic.in/logo.png",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Wakad",
+                            "addressLocality": "Pune",
+                            "addressRegion": "Maharashtra",
+                            "postalCode": "411057",
+                            "addressCountry": "IN"
+                        }
                     },
-                    "areaServed": {
-                        "@type": "City",
-                        "name": "Pune"
-                    },
-                    "description": "We design high-converting landing pages for campaigns, products, and services in Pune. Focused on UI/UX, speed, and ROI-driven results.",
+                    "areaServed": { "@type": "City", "name": "Pune" },
                     "offers": {
                         "@type": "Offer",
                         "priceCurrency": "INR",
-                        "price": "Starting from ₹15,000",
+                        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 15000, "priceCurrency": "INR" },
                         "availability": "https://schema.org/InStock"
                     }
                 })
@@ -37,17 +47,21 @@ const LandingPageDesignPage: React.FC = () => {
                 __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "BreadcrumbList",
-                    "itemListElement": [{
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://zenetic.in"
-                    }, {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "Landing Page Design",
-                        "item": "https://zenetic.in/service/landing-page-design-pune"
-                    }]
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenetic.in" },
+                        { "@type": "ListItem", "position": 2, "name": "Landing Page Design Pune", "item": "https://zenetic.in/service/landing-page-design-pune" }
+                    ]
+                })
+            }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        { "@type": "Question", "name": "What is a landing page?", "acceptedAnswer": { "@type": "Answer", "text": "A landing page is a standalone web page designed for a specific marketing campaign goal — such as capturing leads, selling a product, or promoting an event." } },
+                        { "@type": "Question", "name": "How much does a landing page cost in Pune?", "acceptedAnswer": { "@type": "Answer", "text": "A professional landing page in Pune starts from ₹15,000 depending on complexity, animations, and integrations required." } },
+                        { "@type": "Question", "name": "How fast can you deliver a landing page?", "acceptedAnswer": { "@type": "Answer", "text": "We typically deliver landing pages within 5-7 business days, making them ideal for time-sensitive ad campaigns." } }
+                    ]
                 })
             }} />
 

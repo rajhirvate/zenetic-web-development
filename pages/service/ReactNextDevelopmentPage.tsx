@@ -15,20 +15,30 @@ const ReactNextDevelopmentPage: React.FC = () => {
                     "@context": "https://schema.org",
                     "@type": "Service",
                     "serviceType": "Web Application Development",
+                    "name": "React & Next.js Development Pune",
+                    "url": "https://zenetic.in/service/react-nextjs-development-pune",
+                    "description": "Specialized React & Next.js development for startups and SaaS businesses in Pune. We build modern, high-performance web applications that scale.",
                     "provider": {
                         "@type": "LocalBusiness",
-                        "name": "Zenetic",
-                        "image": "https://zenetic.in/logo.png"
+                        "name": "Zenetic Enterprise - Web Solutions",
+                        "url": "https://zenetic.in",
+                        "telephone": "+919167041276",
+                        "email": "rajhirvate@gmail.com",
+                        "image": "https://zenetic.in/logo.png",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Wakad",
+                            "addressLocality": "Pune",
+                            "addressRegion": "Maharashtra",
+                            "postalCode": "411057",
+                            "addressCountry": "IN"
+                        }
                     },
-                    "areaServed": {
-                        "@type": "City",
-                        "name": "Pune"
-                    },
-                    "description": "Specialized React & Next.js development for startups and SaaS businesses in Pune. We build modern, high-performance web applications that scale.",
+                    "areaServed": { "@type": "City", "name": "Pune" },
                     "offers": {
                         "@type": "Offer",
                         "priceCurrency": "INR",
-                        "price": "Starting from ₹40,000",
+                        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 40000, "priceCurrency": "INR" },
                         "availability": "https://schema.org/InStock"
                     }
                 })
@@ -37,17 +47,21 @@ const ReactNextDevelopmentPage: React.FC = () => {
                 __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "BreadcrumbList",
-                    "itemListElement": [{
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://zenetic.in"
-                    }, {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "React & Next.js Development",
-                        "item": "https://zenetic.in/service/react-nextjs-development-pune"
-                    }]
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenetic.in" },
+                        { "@type": "ListItem", "position": 2, "name": "React & Next.js Development Pune", "item": "https://zenetic.in/service/react-nextjs-development-pune" }
+                    ]
+                })
+            }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        { "@type": "Question", "name": "Why choose Next.js for my business website?", "acceptedAnswer": { "@type": "Answer", "text": "Next.js provides server-side rendering, excellent SEO performance, fast page loads, and the flexibility to build both static sites and dynamic web applications." } },
+                        { "@type": "Question", "name": "Can you build a SaaS product with React?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We specialize in building scalable SaaS platforms, dashboards, and MVP web applications using React and Next.js for startups and businesses." } },
+                        { "@type": "Question", "name": "How long does a React web app take to build?", "acceptedAnswer": { "@type": "Answer", "text": "A simple React web app takes 3-5 weeks. A full SaaS product or complex web application may take 8-16 weeks depending on features and integrations." } }
+                    ]
                 })
             }} />
 

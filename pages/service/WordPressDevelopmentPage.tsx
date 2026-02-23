@@ -15,20 +15,30 @@ const WordPressDevelopmentPage: React.FC = () => {
                     "@context": "https://schema.org",
                     "@type": "Service",
                     "serviceType": "WordPress Development",
+                    "name": "WordPress Development Pune",
+                    "url": "https://zenetic.in/service/wordpress-development-pune",
+                    "description": "Custom WordPress development services in Pune. We build fast, secure, and easy-to-manage WordPress websites tailored to your business needs.",
                     "provider": {
                         "@type": "LocalBusiness",
-                        "name": "Zenetic",
-                        "image": "https://zenetic.in/logo.png"
+                        "name": "Zenetic Enterprise - Web Solutions",
+                        "url": "https://zenetic.in",
+                        "telephone": "+919167041276",
+                        "email": "rajhirvate@gmail.com",
+                        "image": "https://zenetic.in/logo.png",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Wakad",
+                            "addressLocality": "Pune",
+                            "addressRegion": "Maharashtra",
+                            "postalCode": "411057",
+                            "addressCountry": "IN"
+                        }
                     },
-                    "areaServed": {
-                        "@type": "City",
-                        "name": "Pune"
-                    },
-                    "description": "Custom WordPress development services in Pune. We build fast, secure, and easy-to-manage WordPress websites tailored to your business needs.",
+                    "areaServed": { "@type": "City", "name": "Pune" },
                     "offers": {
                         "@type": "Offer",
                         "priceCurrency": "INR",
-                        "price": "Starting from ₹20,000",
+                        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 20000, "priceCurrency": "INR" },
                         "availability": "https://schema.org/InStock"
                     }
                 })
@@ -37,17 +47,21 @@ const WordPressDevelopmentPage: React.FC = () => {
                 __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "BreadcrumbList",
-                    "itemListElement": [{
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://zenetic.in"
-                    }, {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "WordPress Development",
-                        "item": "https://zenetic.in/service/wordpress-development-pune"
-                    }]
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenetic.in" },
+                        { "@type": "ListItem", "position": 2, "name": "WordPress Development Pune", "item": "https://zenetic.in/service/wordpress-development-pune" }
+                    ]
+                })
+            }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        { "@type": "Question", "name": "Why use WordPress for my business website?", "acceptedAnswer": { "@type": "Answer", "text": "WordPress powers 43% of the internet and provides an easy-to-use CMS so you can update content yourself without needing a developer every time." } },
+                        { "@type": "Question", "name": "Do you build custom WordPress themes?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We hand-code custom WordPress themes without relying on bloated page builders, resulting in faster, cleaner, more secure websites." } },
+                        { "@type": "Question", "name": "Can you migrate my existing site to WordPress?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We handle complete website migrations to WordPress with zero downtime and full content preservation." } }
+                    ]
                 })
             }} />
 

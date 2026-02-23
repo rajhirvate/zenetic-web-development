@@ -15,20 +15,30 @@ const WebDesignPage: React.FC = () => {
                     "@context": "https://schema.org",
                     "@type": "Service",
                     "serviceType": "Web Design & Development",
+                    "name": "Web Design & Development Pune",
+                    "url": "https://zenetic.in/service/web-design-development-pune",
+                    "description": "Professional web design and development services in Pune for businesses and startups. Fast, scalable, SEO-friendly websites built to convert.",
                     "provider": {
                         "@type": "LocalBusiness",
-                        "name": "Zenetic",
-                        "image": "https://zenetic.in/logo.png"
+                        "name": "Zenetic Enterprise - Web Solutions",
+                        "url": "https://zenetic.in",
+                        "telephone": "+919167041276",
+                        "email": "rajhirvate@gmail.com",
+                        "image": "https://zenetic.in/logo.png",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Wakad",
+                            "addressLocality": "Pune",
+                            "addressRegion": "Maharashtra",
+                            "postalCode": "411057",
+                            "addressCountry": "IN"
+                        }
                     },
-                    "areaServed": {
-                        "@type": "City",
-                        "name": "Pune"
-                    },
-                    "description": "Professional web design and development services in Pune for businesses and startups. Fast, scalable, SEO-friendly websites built to convert.",
+                    "areaServed": { "@type": "City", "name": "Pune" },
                     "offers": {
                         "@type": "Offer",
                         "priceCurrency": "INR",
-                        "price": "Starting from ₹25,000",
+                        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 25000, "priceCurrency": "INR" },
                         "availability": "https://schema.org/InStock"
                     }
                 })
@@ -37,17 +47,21 @@ const WebDesignPage: React.FC = () => {
                 __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "BreadcrumbList",
-                    "itemListElement": [{
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://zenetic.in"
-                    }, {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "Web Design & Development",
-                        "item": "https://zenetic.in/service/web-design-development-pune"
-                    }]
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenetic.in" },
+                        { "@type": "ListItem", "position": 2, "name": "Web Design & Development Pune", "item": "https://zenetic.in/service/web-design-development-pune" }
+                    ]
+                })
+            }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        { "@type": "Question", "name": "How much does a website cost in Pune?", "acceptedAnswer": { "@type": "Answer", "text": "A professional business website in Pune starts from ₹25,000 depending on the complexity, number of pages, and features required." } },
+                        { "@type": "Question", "name": "How long does it take to build a website?", "acceptedAnswer": { "@type": "Answer", "text": "Most business websites take 2-4 weeks. Complex web applications and ecommerce stores may take 4-8 weeks depending on scope." } },
+                        { "@type": "Question", "name": "Do you provide SEO with web design?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All websites we build are SEO-optimized from day one — clean code, fast loading, mobile-first design, and Core Web Vitals compliance." } }
+                    ]
                 })
             }} />
 

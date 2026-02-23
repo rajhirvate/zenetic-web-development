@@ -15,20 +15,30 @@ const EcommerceDevelopmentPage: React.FC = () => {
                     "@context": "https://schema.org",
                     "@type": "Service",
                     "serviceType": "Ecommerce Development",
+                    "name": "Ecommerce Website Development Pune",
+                    "url": "https://zenetic.in/service/ecommerce-website-development-pune",
+                    "description": "Custom Ecommerce development services in Pune. We build secure, high-performance online stores using WooCommerce and Shopify to maximize your sales.",
                     "provider": {
                         "@type": "LocalBusiness",
-                        "name": "Zenetic",
-                        "image": "https://zenetic.in/logo.png"
+                        "name": "Zenetic Enterprise - Web Solutions",
+                        "url": "https://zenetic.in",
+                        "telephone": "+919167041276",
+                        "email": "rajhirvate@gmail.com",
+                        "image": "https://zenetic.in/logo.png",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Wakad",
+                            "addressLocality": "Pune",
+                            "addressRegion": "Maharashtra",
+                            "postalCode": "411057",
+                            "addressCountry": "IN"
+                        }
                     },
-                    "areaServed": {
-                        "@type": "City",
-                        "name": "Pune"
-                    },
-                    "description": "Custom Ecommerce development services in Pune. We build secure, high-performance online stores using WooCommerce and Shopify to maximize your sales.",
+                    "areaServed": { "@type": "City", "name": "Pune" },
                     "offers": {
                         "@type": "Offer",
                         "priceCurrency": "INR",
-                        "price": "Starting from ₹35,000",
+                        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 35000, "priceCurrency": "INR" },
                         "availability": "https://schema.org/InStock"
                     }
                 })
@@ -37,17 +47,21 @@ const EcommerceDevelopmentPage: React.FC = () => {
                 __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "BreadcrumbList",
-                    "itemListElement": [{
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://zenetic.in"
-                    }, {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "Ecommerce Development",
-                        "item": "https://zenetic.in/service/ecommerce-website-development-pune"
-                    }]
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenetic.in" },
+                        { "@type": "ListItem", "position": 2, "name": "Ecommerce Website Development Pune", "item": "https://zenetic.in/service/ecommerce-website-development-pune" }
+                    ]
+                })
+            }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        { "@type": "Question", "name": "Which ecommerce platform is best for my business?", "acceptedAnswer": { "@type": "Answer", "text": "WooCommerce is ideal for businesses wanting full control and customization. Shopify is better for businesses that want a hosted, easier-to-manage solution. We can help you choose based on your catalog and budget." } },
+                        { "@type": "Question", "name": "How much does an ecommerce website cost in Pune?", "acceptedAnswer": { "@type": "Answer", "text": "A professional ecommerce store in Pune starts from ₹35,000 depending on the number of products, payment gateways, and custom functionality required." } },
+                        { "@type": "Question", "name": "Can you add Razorpay to my ecommerce site?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We integrate all major Indian payment gateways including Razorpay, PayU, and CCAvenue, along with international gateways like Stripe and PayPal." } }
+                    ]
                 })
             }} />
 
