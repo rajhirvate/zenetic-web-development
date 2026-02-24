@@ -15,6 +15,7 @@ import WordPressDevelopmentPage from './pages/service/WordPressDevelopmentPage';
 import ReactNextDevelopmentPage from './pages/service/ReactNextDevelopmentPage';
 import LandingPageDesignPage from './pages/service/LandingPageDesignPage';
 import EcommerceDevelopmentPage from './pages/service/EcommerceDevelopmentPage';
+import ServicesPage from './pages/ServicesPage';
 
 import SEO from './components/SEO';
 
@@ -28,6 +29,7 @@ const ScrollToTop = () => {
 };
 
 import SemanticSEO from './components/SemanticSEO';
+import FloatingCTA from './components/FloatingCTA';
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -73,11 +75,11 @@ const localBusinessSchema = {
     "@type": "OfferCatalog",
     "name": "Web Development Services",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design & Development Pune" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Development Pune" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "React & Next.js Development Pune" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing Page Design Pune" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ecommerce Website Development Pune" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design & Development Pune", "url": "https://zenetic.in/service/web-design-development-pune" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Development Pune", "url": "https://zenetic.in/service/wordpress-development-pune" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "React & Next.js Development Pune", "url": "https://zenetic.in/service/react-nextjs-development-pune" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing Page Design Pune", "url": "https://zenetic.in/service/landing-page-design-pune" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ecommerce Website Development Pune", "url": "https://zenetic.in/service/ecommerce-website-development-pune" } }
     ]
   }
 };
@@ -114,6 +116,7 @@ const Home: React.FC = () => (
     <AboutMe />
     <TechStack />
     <Contact />
+    <SemanticSEO />
   </main>
 );
 
@@ -133,6 +136,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <div className="min-h-screen font-sans text-brand-black bg-brand-cream selection:bg-brand-red selection:text-white">
         <Header scrolled={scrolled} />
+        <FloatingCTA />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/service/web-design-development-pune" element={<WebDesignPage />} />
@@ -140,8 +144,8 @@ const App: React.FC = () => {
           <Route path="/service/react-nextjs-development-pune" element={<ReactNextDevelopmentPage />} />
           <Route path="/service/landing-page-design-pune" element={<LandingPageDesignPage />} />
           <Route path="/service/ecommerce-website-development-pune" element={<EcommerceDevelopmentPage />} />
+          <Route path="/services" element={<ServicesPage />} />
         </Routes>
-        <SemanticSEO />
         <Footer />
       </div>
     </>

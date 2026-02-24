@@ -21,8 +21,8 @@ const AboutMe: React.FC = () => {
                     <span className="text-brand-red text-xs font-bold tracking-[0.3em] uppercase mb-4 block">About Us</span>
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-brand-black leading-none">
-                            Built by Pune's <br />
-                            <span className="text-brand-muted">web specialists.</span>
+                            Crafted by <br />
+                            <span className="text-brand-muted">digital experts.</span>
                         </h2>
                         <p className="text-brand-muted text-lg max-w-sm md:text-right leading-relaxed">
                             A Pune-based web agency helping businesses grow through custom websites, technical excellence, and digital strategy.

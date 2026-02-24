@@ -151,7 +151,7 @@ const Services: React.FC = () => {
             <div className="max-w-2xl">
               <h2 className="text-brand-red text-xs font-bold tracking-[0.3em] uppercase mb-4">What We Offer</h2>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tighter">
-                Pune's choice for <span className="opacity-80">digital growth.</span>
+                Your choice for <span className="opacity-80">digital growth.</span>
               </h3>
             </div>
             <p className="text-brand-muted max-w-xs text-lg mb-2">

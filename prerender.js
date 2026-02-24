@@ -12,6 +12,7 @@ const { render } = await import('./dist/server/entry-server.js')
 // List of routes to prerender
 const routesToPrerender = [
     '/',
+    '/services',
     '/service/web-design-development-pune',
     '/service/wordpress-development-pune',
     '/service/react-nextjs-development-pune',
