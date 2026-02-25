@@ -30,6 +30,7 @@ const ScrollToTop = () => {
 
 import SemanticSEO from './components/SemanticSEO';
 import FloatingCTA from './components/FloatingCTA';
+import Clients from './components/Clients';
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -111,6 +112,7 @@ const Home: React.FC = () => (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
     <Hero />
+    <Clients />
     <Services />
     <Work />
     <AboutMe />
