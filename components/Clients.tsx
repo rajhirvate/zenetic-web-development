@@ -23,7 +23,7 @@ const clients = [
 
 const Clients: React.FC = () => {
     return (
-        <section className="py-12 bg-white border-b border-gray-100 overflow-hidden">
+        <section className="py-12 bg-[#FDFCFA] border-b border-gray-100 overflow-hidden">
             <style>
                 {`
                     @keyframes scroll {
@@ -48,8 +48,8 @@ const Clients: React.FC = () => {
 
             <div className="relative w-full overflow-hidden flex items-center">
                 {/* Fade masks for smooth edges */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+                <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 bg-gradient-to-r from-[#FDFCFA] to-transparent pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 bg-gradient-to-l from-[#FDFCFA] to-transparent pointer-events-none" />
 
                 {/* Marquee Track */}
                 <div className="flex animate-scroll whitespace-nowrap items-center min-w-max">
