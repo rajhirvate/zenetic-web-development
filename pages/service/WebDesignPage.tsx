@@ -207,9 +207,10 @@ const WebDesignPage: React.FC = () => {
                                         <label className="text-[10px] font-bold uppercase tracking-widest text-brand-muted">Phone Number *</label>
                                         <input
                                             type="tel" required
+                                            inputMode="numeric" pattern="[0-9]*" maxLength={15}
                                             value={formData.phone}
-                                            onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
-                                            placeholder="+91 98765 43210"
+                                            onChange={e => setFormData(p => ({ ...p, phone: e.target.value.replace(/\D/g, '') }))}
+                                            placeholder="9876543210"
                                             className="w-full border-b-2 border-gray-200 focus:border-brand-red outline-none py-3 text-base bg-transparent transition-colors"
                                         />
                                     </div>

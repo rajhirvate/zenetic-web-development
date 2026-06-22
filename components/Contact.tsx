@@ -25,15 +25,26 @@ const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const digitsOnly = e.target.value.replace(/\D/g, '');
+    setFormData(prev => ({ ...prev, phone: digitsOnly }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
     setErrorMessage('');
 
     // Basic Validation
-    if (!formData.name || !formData.email || formData.requirements.length === 0) {
+    if (!formData.name || !formData.email || !formData.phone || formData.requirements.length === 0) {
       setStatus('error');
-      setErrorMessage('Please fill in Name, Email and select at least one Requirement.');
+      setErrorMessage('Please fill in Name, Email, Phone and select at least one Requirement.');
+      return;
+    }
+
+    if (formData.phone.length < 10) {
+      setStatus('error');
+      setErrorMessage('Please enter a valid phone number (at least 10 digits).');
       return;
     }
 
@@ -64,7 +75,7 @@ const Contact: React.FC = () => {
       // 2. Success - Prepare WhatsApp Redirect
       setStatus('success');
 
-      const text = `Hi, I am interested in ${formData.requirements.join(', ')}. My name is ${formData.name} (${formData.email}). Link: ${window.location.href}`;
+      const text = `Hi, I am interested in ${formData.requirements.join(', ')}. My name is ${formData.name} (${formData.email}, ${formData.phone}). Link: ${window.location.href}`;
       const whatsappUrl = `https://wa.me/919167041276?text=${encodeURIComponent(text)}`;
 
       // 3. Open WhatsApp in new tab (Failsafe: user already sees success message if this blocked)
@@ -172,6 +183,21 @@ const Contact: React.FC = () => {
                     className="w-full bg-transparent border-b-2 border-brand-black/10 focus:border-brand-red outline-none py-3 text-lg transition-colors"
                   />
                 </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold tracking-widest uppercase text-brand-muted">Phone *</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  required
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={15}
+                  placeholder="9876543210"
+                  className="w-full bg-transparent border-b-2 border-brand-black/10 focus:border-brand-red outline-none py-3 text-lg transition-colors"
+                />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] font-bold tracking-widest uppercase text-brand-muted">Requirement *</label>
